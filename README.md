@@ -1,7 +1,6 @@
 # venture_nn
-Neural network analyzing venture capital data
 
-This Jupyter Notebook is a financial planning tool that uses APIs for portfolio analysis of crypto, stock, and bond allocations
+This Jupyter Notebook is a neural network analyzing venture capital data
 
 ---
 
@@ -11,19 +10,18 @@ Project uses:
 
 [Pandas](https://pandas.pydata.org/)
 
-[json](https://www.json.org/json-en.html)
+[pathlib](https://docs.python.org/3/library/pathlib.html)
 
-[dotenv](https://www.npmjs.com/package/dotenv)
+[tensorflow](https://www.tensorflow.org/)
 
-[alpaca_trade_api](https://pypi.org/project/alpaca-trade-api//)
+[sklearn](https://scikit-learn.org/stable/)
 
-[MCForecastTools](https://pypi.org/project/forecast-tools/)
 
 ---
 
 ## Installation Guide
 
-Run this program in Jupyter notebook and have a API keys ready from Alpaca
+Run this program in Jupyter notebook and have a Pandas, Pathlib, Tensorflow and SKlearn installed. 
 
 
 
@@ -35,20 +33,30 @@ Utilize Jupyter Labs to interact with the software program
 
 !["Jupyter Labs Example"](https://miro.medium.com/max/955/1*mXGu0MeYgnUkyR9ybVlQpg.png)
 
-**Key example code for MonteCarlo Simulations**
+**Key example code for Neural Network**
 ```
-# Configure the Monte Carlo simulation to forecast 30 years cumulative returns
-# The weights should be split 40% to AGG and 60% to SPY.
-# Run 500 samples.
-mc_traditional = MCSimulation(
-    portfolio_data = prices_df,
-    weights = [.40,.60],
-    num_simulation = 500,
-    num_trading_days = 252*30
-)
+# Define the number of neurons in the output layer
+number_output_neurons_A1 = 15
 
-# Review the simulation input data
-mc_traditional.portfolio_data.head()
+# Define the number of hidden nodes for the first hidden layer
+hidden_nodes_layer1_A1 = (number_input_features + 1) // 2 
+
+# Review the number of hidden nodes in the first layer
+hidden_nodes_layer1_A1
+
+# Create the Sequential model instance
+nn_A1 = Sequential()
+
+# First hidden layer
+nn_A1.add(Dense(units=hidden_nodes_layer1, input_dim=number_input_features, activation="relu"))
+
+
+# Output layer
+nn_A1.add(Dense(units=1, activation="sigmoid"))
+
+
+# Check the structure of the model
+nn_A1.summary()
 ```
 
 ---
